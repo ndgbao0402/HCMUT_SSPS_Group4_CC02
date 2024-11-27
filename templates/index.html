@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang giới thiệu</title>
+    <!-- Liên kết CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+  </head>
+  <body class="leading-[normal] font-font1">
+    <div class="m-0">
+      <div class="introduce-page box-border">
+        <div class="inner-warp box-border">
+          <!-- Header -->
+          <div
+            class="inner-header box-border flex justify-between pr-3 h-20 bg-[#1488DB]"
+          >
+            <div class="inner-logo box-border flex">
+              <!-- Liên kết logo về trang chủ -->
+              <a
+                href="{{ url_for('home') }}"
+                class="p-0 m-0 bg-[#FFFFFF] flex items-center"
+              >
+                <img
+                  src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                  alt="Logo"
+                  class="w-24 h-20"
+                />
+              </a>
+            </div>
+            <div class="inner-login box-border flex items-center">
+              <!-- Liên kết đến trang Đăng nhập -->
+              <a
+                href="{{ url_for('login') }}"
+                class="text-2xl font-bold text-[#FFFFFF]"
+              >
+                Đăng nhập
+              </a>
+            </div>
+          </div>
+          <!-- Background -->
+          <div class="inner-background box-border">
+            <img
+              src="{{ url_for('static', filename='image/bk-16927240565021297712364 1.png') }}"
+              alt="Background"
+              class="w-full h-full"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

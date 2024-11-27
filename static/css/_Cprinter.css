@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --font:"Be Vietnam Pro", sans-serif;
+}
+*{
+    box-sizing: border-box;
+    margin: 0;
+}
+body{
+    font-family: var(--font);
+
+}
+a{
+    text-decoration: none;
+}
+.inner-wrap{
+    display: block;
+    gap: 50px;
+    width: 80%
+    
+}
+.inner-wrap .inner-head{
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+    align-items: center;
+    height: 7%;
+    width: 100%;
+    padding: 10px;
+}
+.inner-wrap .inner-head .inner-search{
+    display: inline-flex;
+    background-color: #D6DCE9;
+    color: #7E7E7E;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+    width: 30%;
+    height: 33px;
+
+}
+.inner-wrap .inner-head .inner-search input{
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+.inner-wrap .inner-head .inner-sort{
+    display: flex;
+    background-color: #D6DCE9;
+    color: #7E7E7E;
+    justify-content: space-around; 
+    align-items: center;
+    padding: 0px 10px;
+    gap: 5px;
+    border-radius: 10px;
+    width: 30%;
+    height: 33px;
+}
+.inner-wrap .inner-head .inner-sort label{
+    width: 60%;
+}
+.inner-wrap .inner-head .inner-sort select{
+    background-color: transparent;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+.inner-wrap .inner-printer {
+    gap: 30px;
+}
+.inner-wrap .inner-printer .inner-row{
+    display: flex;
+    gap: 50px;
+    padding: 10px;
+}
+
+.inner-wrap .inner-printer .inner-row img{
+ width: calc((100% - 170px))/4;
+ height: auto;
+}

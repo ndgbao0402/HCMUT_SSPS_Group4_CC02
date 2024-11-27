@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch sử in</title>
+    <link rel="stylesheet" href="assets/css/view_reports.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind.config.js"></script>
+</head>
+
+<body>
+    <div class="inner-view-main">
+        <div class="inner-view-main__window fixed z-[9999] left-[30%] top-[20%] h-2/4 w-2/4 hidden">
+            <div class="inner-view-main__window--header flex justify-between py-2 px-2 bg-[#1488DB] items-center">
+                <div class="inner-name text-[#FFFFFF] text-2xl font-medium">Nguyễn Văn A</div>
+                <button class="inner-x text-[#E44061] text-3xl bg-transparent"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+            <div class="inner-view-main__window--header--content flex flex-col py-5 px-16 bg-[#AEACAC] gap-[1.88rem]">
+                <div>Tên học sinh: Nguyễn Văn A</div>
+                <div>Mã số sinh viên: 2248987</div>
+                <div>Mã máy in: B1-1</div>
+                <div>Điện thoại: 0929283473</div>
+                <div>Email: vana@hcmut.edu.vn</div>
+                <div>Số trang in: 15 (A4: 13, A3: 2)</div>
+                <div>Tên file: Computer Networking A Top-Down Approach, Global Edition, 8th Edition (Kurose, James,
+                    Ross, Keith).pdf</div>
+                <div>Thời gian bắt đầu in: 15:27 15/10/24</div>
+                <div>Thời gian kết thúc in: 15:28 15/10/24 </div>
+            </div>
+        </div>
+        <div class="inner-containner z-[1]">
+            <div class="inner-left absolute z-10 bg-[#FFFFFF] h-full w-1/5 block">
+                <div class="inner-tag border-b border-gray-300 flex p-3 h-28 w-full text-base font-bold mb-9 justify-center gap-[0.63rem] items-center">
+                    <a href="#" class="inner-logo flex w-2/5 h-full">
+                        <img src="assets/image/01_logobachkhoasang 1.png" alt="" class="h-full w-full">
+                    </a>
+                    <div class="inner-dash text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center">
+                        <div class="inner-dashboard">
+                            Bảng điều khiển
+                        </div>
+                        <button class="inner-angle-left text-sm text-[#9197B3] bg-transparent p-0">
+                            <i class="fa-solid fa-angles-left"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="inner-left-options flex flex-col gap-[2.31rem] text-left justify-center">
+                    <div class="one flex justify-center">
+                        <a href="dash_SPSO.html">
+                            Bảng điều khiển
+                        </a>
+                    </div>
+                    <div class="two flex justify-center">
+                        <a href="#">
+                            Lịch sử in
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                    <div class="three flex justify-center">
+                        <a href="#">
+                            Quản lí máy in
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                    <div class="four flex justify-center">
+                        <a href="#">
+                            Quản lí tệp
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="header flex justify-between pr-3 h-20 bg-[#1488DB]">
+                <div class="header-logo border-b border-gray-300 flex">
+                    <a href="#" class="p-0 m-0 bg-[#FFFFFF] flex items-center">
+                        <img src="assets/image/01_logobachkhoasang 1.png" alt="" class="w-24 h-20">
+                    </a>
+                </div>
+                <div class="header-logout flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-[#FFFFFF]">
+                        SPSO
+                    </a>
+                </div>
+            </div>
+            <div class="inner-body flex justify-between w-full gap-[1.88rem]">
+                <button class="inner-short w-11 h-16 text-[3.13rem] leading-none bg-transparent ml-3 mt-3.5">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+                <div class="inner-right block justify-between w-4/5 pt-12 pr-2 pb-8 pl-2">
+                    <div class="inner-right__header flex justify-between py-2 px-2 h-28 items-center">
+                        <div class="inner-right__header__content font-bold text-[1.38rem] leading-7">
+                            Tất cả học sinh
+                        </div>
+                        <div class="inner-right__header__operate flex py-2 px-2 gap-[0.63rem]">
+                            <div class="inner-search ">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input type="text" placeholder="Tìm">
+                            </div>
+                            <div class="inner-sort ">
+                                <label for="choices">Lọc bởi:</label>
+                                <select name="choices" id="choices" class="bg-transparent font-medium">
+                                    <option value="enable">Mới nhất</option>
+                                    <option value="unable">Cũ nhất</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="inner-table">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Tên học sinh</th>
+                                    <th>Mã máy in</th>
+                                    <th>Số điện thoại</th>
+                                    <th>Email</th>
+                                    <th>Số trang in</th>
+                                    <th>Ngày in</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail" >
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Nguyen Van A</td>
+                                    <td>B1-1</td>
+                                    <td>0929283473</td>
+                                    <td>vana@hcmut.edu.vn</td>
+                                    <td>15</td>
+                                    <td>
+                                        15:29
+                                        15/10/24
+                                    </td>
+                                    <td><button class="moredetail">
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button></i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="inner-page flex justify-right pr-5 gap-3">
+                        <button>
+                            <i class="fa-solid fa-angle-left"></i>
+                        </button>
+                        <button>1</button>
+                        <button>2</button>
+                        <button>3</button>
+                        <button>4</button>
+                        <button>...</button>
+                        <button>9</button>
+                        <button>
+                            <i class="fa-solid fa-angle-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/viewrp.js">
+
+    </script>
+</body>
+
+</html>

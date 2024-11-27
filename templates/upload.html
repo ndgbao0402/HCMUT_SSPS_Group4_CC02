@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Liên kết CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/dash_SPSO.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Qwitcher+Grypen:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@100;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body>
+    <div class="m-0">
+      <div class="inner-view-main box-border">
+        <div class="inner-containner box-border z-[1]">
+          <div
+            class="inner-left box-border absolute z-10 bg-[#FFFFFF] h-full w-1/5 block"
+          >
+            <div class="inner-tag box-border">
+              <!-- Logo -->
+              <a
+                href="{{ url_for('dash_SPSO') }}"
+                class="inner-logo no-underline flex w-2/5 h-full"
+              >
+                <img
+                  src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                  alt="Logo"
+                  class="h-full w-full"
+                />
+              </a>
+              <div
+                class="inner-dash box-border text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center"
+              >
+                <div class="inner-dashboard box-border">Bảng điều khiển</div>
+                <button class="inner-angle-left">
+                  <i class="fa-solid fa-angles-left"></i>
+                </button>
+              </div>
+            </div>
+            <!-- Menu -->
+            <div
+              class="inner-left-options box-border flex flex-col gap-[2.31rem] text-left justify-center"
+            >
+              <div class="one box-border flex justify-center">
+                <a href="{{ url_for('dash_SPSO') }}" class="no-underline">
+                  Bảng điều khiển
+                </a>
+              </div>
+              <div class="two box-border flex justify-center">
+                <a href="{{ url_for('view_reports') }}" class="no-underline">
+                  Lịch sử in
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+              <div class="three box-border flex justify-center">
+                <a href="#" class="no-underline">
+                  Quản lí máy in
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+              <div class="four box-border flex justify-center">
+                <a href="#" class="no-underline">
+                  Quản lí tệp
+                  <i class="fa-solid fa-angle-right"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Header -->
+          <div
+            class="header box-border flex justify-between pr-3 h-20 bg-[#1488DB]"
+          >
+            <div class="header-logo box-border flex border-b border-gray-300">
+              <a
+                href="{{ url_for('dash_SPSO') }}"
+                class="no-underline p-0 m-0 bg-[#FFFFFF] flex items-center"
+              >
+                <img
+                  src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                  alt="Logo"
+                  class="w-24 h-20"
+                />
+              </a>
+            </div>
+            <div class="header-logout box-border flex items-center">
+              <a href="{{ url_for('home') }}">
+                SPSO
+                <i class="fa-solid fa-right-from-bracket"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Body -->
+          <div
+            class="inner-body box-border flex justify-between w-full gap-[2.69rem]"
+          >
+            <button class="inner-short">
+              <i class="fa-solid fa-bars"></i>
+            </button>
+            <img
+              src="{{ url_for('static', filename='image/bk-16927240565021297712364 1.png') }}"
+              alt="Background Image"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/viewrp.js') }}"></script>
+  </body>
+</html>

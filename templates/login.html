@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Đăng nhập</title>
+    <!-- Liên kết CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="main-page">
+      <div class="container">
+        <div class="inner-wrap">
+          <!-- Header -->
+          <div class="header">
+            <div class="header-logo">
+              <!-- Liên kết logo về trang chủ -->
+              <a href="{{ url_for('home') }}">
+                <img
+                  src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                  alt="Logo"
+                />
+              </a>
+            </div>
+          </div>
+
+          <!-- Content -->
+          <div class="content">
+            <div class="inner-login-box">
+              <form action="{{ url_for('login') }}" method="post">
+                <div class="inner-image">
+                  <img
+                    src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                    alt="Logo"
+                  />
+                </div>
+                <div class="input-box-username">
+                  <label for="username">Tên đăng nhập</label>
+                  <input type="text" id="username" name="username" required />
+                </div>
+                <div class="input-box-password">
+                  <label for="password">Mật khẩu</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    required
+                  />
+                </div>
+                <button type="submit" class="login-btn">Đăng nhập</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
