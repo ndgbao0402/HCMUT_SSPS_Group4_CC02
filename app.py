@@ -33,6 +33,10 @@ def login():
 def dash_SPSO():
     return render_template('dash_SPSO.html')
 
+@app.route('/dash_SPSO.html')
+def dash_SPSOhtml():
+    return render_template('dash_SPSO.html')
+
 @app.route('/dash_Stu')
 def dash_Stu():
     return render_template('dash_Stu.html')
