@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch sử in</title>
-    <link rel="stylesheet" href="assets/css/view_reports.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_reports.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -40,8 +40,8 @@
         <div class="inner-containner z-[1]">
             <div class="inner-left absolute z-10 bg-[#FFFFFF] h-full w-1/5 block">
                 <div class="inner-tag border-b border-gray-300 flex p-3 h-28 w-full text-base font-bold mb-9 justify-center gap-[0.63rem] items-center">
-                    <a href="#" class="inner-logo flex w-2/5 h-full">
-                        <img src="assets/image/01_logobachkhoasang 1.png" alt="" class="h-full w-full">
+                    <a href="{{ url_for('dash_SPSO') }}" class="inner-logo flex w-2/5 h-full">
+                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="" class="h-full w-full">
                     </a>
                     <div class="inner-dash text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center">
                         <div class="inner-dashboard">
@@ -54,12 +54,12 @@
                 </div>
                 <div class="inner-left-options flex flex-col gap-[2.31rem] text-left justify-center">
                     <div class="one flex justify-center">
-                        <a href="dash_SPSO.html">
+                        <a href="{{ url_for('dash_SPSO') }}">
                             Bảng điều khiển
                         </a>
                     </div>
                     <div class="two flex justify-center">
-                        <a href="#">
+                        <a href="{{ url_for('view_reports') }}">
                             Lịch sử in
                             <i class="fa-solid fa-angle-right"></i>
                         </a>
@@ -80,12 +80,12 @@
             </div>
             <div class="header flex justify-between pr-3 h-20 bg-[#1488DB]">
                 <div class="header-logo border-b border-gray-300 flex">
-                    <a href="#" class="p-0 m-0 bg-[#FFFFFF] flex items-center">
-                        <img src="assets/image/01_logobachkhoasang 1.png" alt="" class="w-24 h-20">
+                    <a href="{{ url_for('dash_SPSO') }}" class="p-0 m-0 bg-[#FFFFFF] flex items-center">
+                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="" class="w-24 h-20">
                     </a>
                 </div>
                 <div class="header-logout flex items-center">
-                    <a href="index.html" class="text-2xl font-bold text-[#FFFFFF]">
+                    <a href="{{ url_for('home') }}" class="text-2xl font-bold text-[#FFFFFF]">
                         SPSO
                     </a>
                 </div>
@@ -254,7 +254,7 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/viewrp.js">
+    <script src="{{ url_for('static', filename='js/viewrp.js') }}">
 
     </script>
 </body>

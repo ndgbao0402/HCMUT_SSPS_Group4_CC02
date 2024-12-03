@@ -298,10 +298,9 @@ a{
     font-weight: 400;
     color: #9197B3;
 }
-.upload .inner-warp .inner-box .inner-main .inner-file .main-upload .main-upload-button{
-    width: 42%;
-}
-.upload .inner-warp .inner-box .inner-main .inner-file .main-upload .main-upload-button button{
+/* Đảm bảo tất cả các nút trong phần tải lên đều được định dạng */
+.upload .main-upload-button button,
+.upload .inner-warp .inner-box .inner-main .inner-file .main-upload-button button {
     background-color: #1488DB;
     width: 100%;
     height: 84px;
@@ -309,4 +308,37 @@ a{
     font-family: var(--font);
     font-size: 32px;
     font-weight: 400;
+    border: none;
+    border-radius: 8px; /* Thêm viền bo tròn */
+    cursor: pointer; /* Thêm hiệu ứng con trỏ */
+    transition: background-color 0.3s ease; /* Hiệu ứng hover */
+}
+
+/* Hiệu ứng hover */
+.upload .main-upload-button button:hover {
+    background-color: #0d6eb5;
+}
+
+/* Định dạng nút khi disabled */
+.upload .main-upload-button button:disabled {
+    background-color: #b0c4de;
+    cursor: not-allowed;
+}
+.upload .main-upload-button button {
+    background-color: #1488DB !important;
+}
+.upload-label {
+    background-color: #1488DB; /* Màu nền */
+    color: white; /* Màu chữ */
+    width: 100%; /* Đảm bảo nút chiếm toàn bộ chiều rộng */
+    padding: 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 18px;
+    cursor: pointer; /* Hiển thị con trỏ như khi bấm nút */
+    transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+    background-color: #1068B5; /* Màu khi hover */
 }
