@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Example</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/popup_default_pages.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+  <body>
+    <div id="editPagesPopup" class="popup2">
+      <div class="popup-content2">
+        <span class="close-btn2">&times;</span>
+        <h3>Chỉnh sửa số trang mặc định</h3>
+        <p>
+          Số trang mặc định được cấp cho học sinh:
+          <span id="currentPages">10</span>
+        </p>
+        <button
+          class="add-btn"
+          id="changePagesBtn"
+          onClick="changeDefaultPages()">
+          Thay đổi
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

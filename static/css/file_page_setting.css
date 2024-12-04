@@ -1,0 +1,194 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color--text-light: #ffffff;
+  --color--header: #1488db;
+  --color--link-inactive: #9197b3;
+  --color--link-active: #1488db;
+  --font: "Be Vietnam Pro", sans-serif;
+}
+
+body {
+  font-family: var(--font);
+  line-height: normal;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+/* General Link Styling */
+a {
+  text-decoration: none;
+}
+
+.inner-containner {
+  z-index: 1;
+}
+
+/* Header Styling */
+.inner-containner .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+  height: 83px;
+  background-color: var(--color--header);
+}
+
+.inner-containner .header .header-logo {
+  display: flex;
+}
+
+.inner-containner .header .header-logo a {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+
+.inner-containner .header .header-logo a img {
+  width: 97px;
+  height: 73px;
+}
+
+.inner-containner .header .header-logout {
+  display: flex;
+  align-items: center;
+}
+
+.inner-containner .header .header-logout a {
+  font-family: var(--font);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color--text-light);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Sidebar Styling */
+.inner-containner .inner-left {
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  height: 100%;
+  width: 20%;
+  display: block;
+  border-right: 1px solid #dddddd;
+}
+
+.inner-containner .inner-left .inner-tag {
+  display: flex;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px;
+  height: 105px;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 37px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.inner-containner .inner-left .inner-tag .inner-dash button {
+  font-family: var(--font);
+  font-size: 14px;
+  color: var(--color--link-inactive);
+  background-color: transparent;
+  border: 0;
+}
+
+.inner-containner .inner-left .inner-left-options {
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+  text-align: left;
+  justify-content: center;
+}
+
+.inner-containner .inner-left .inner-left-options .one a,
+.inner-containner .inner-left .inner-left-options .two a,
+.inner-containner .inner-left .inner-left-options .three a {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--color--link-inactive);
+  height: 46px;
+  border-radius: 8px;
+  align-items: center;
+  padding: 5%;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.inner-containner .inner-left .inner-left-options .one a:hover,
+.inner-containner .inner-left .inner-left-options .two a:hover,
+.inner-containner .inner-left .inner-left-options .three a:hover {
+  background-color: var(--color--link-active);
+  color: var(--color--text-light);
+}
+
+.inner-containner .inner-left .inner-left-options .four a {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  font-family: var(--font);
+  font-size: 16px;
+  color: var(--color--text-light);
+  background-color: var(--color--link-active);
+  height: 46px;
+  border-radius: 8px;
+  align-items: center;
+  padding: 5%;
+}
+
+/* Main Body and Buttons */
+.inner-view-main .inner-containner .inner-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 43px;
+  padding: 20px;
+}
+
+.inner-view-main .inner-containner .inner-body .inner-short {
+  position: absolute; /* Ensure it is positioned relative to the screen */
+  top: 80px; /* Lower the button to avoid overlapping the logo */
+  left: 10px; /* Align the button to the left of the screen */
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  background-color: transparent;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.inner-view-main .inner-containner .inner-body .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.inner-view-main .inner-containner .inner-body .button-group button {
+  padding: 10px 20px;
+  background-color: var(--color--header);
+  color: var(--color--text-light);
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.inner-view-main .inner-containner .inner-body .button-group button:hover {
+  background-color: #1266a9;
+}

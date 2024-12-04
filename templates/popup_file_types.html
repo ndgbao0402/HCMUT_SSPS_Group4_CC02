@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup Example</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/popup_file_types.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+  <body>
+    <!-- Popup -->
+    <div id="popupScreen" class="popup">
+      <div class="popup-content">
+        <div class="popup-header">
+          <h3>Chỉnh sửa kiểu tệp được cho phép</h3>
+          <button class="close-btn" onclick="closePopup()">
+            <i class="fa-solid fa-times"></i>
+          </button>
+        </div>
+        <div class="popup-body">
+          <button onclick="fetchFileTypes()">Xem kiểu tệp được cho phép</button>
+          <div id="fileTypesContainer" class="file-types"></div>
+        </div>
+        <div class="popup-footer">
+          <button class="add-btn" onclick="addFileType()">Thêm kiểu tệp</button>
+          <button class="remove-btn" onclick="removeFileType()">Loại bỏ</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
