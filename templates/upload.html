@@ -72,6 +72,7 @@
           </div>
         </div>
       </div>
+<<<<<<< HEAD
       <div class="inner-box">
         <button class="inner-short">
           <i class="fa-solid fa-bars"></i>
@@ -82,6 +83,16 @@
             <div class="choose-printer">Chọn máy in</div>
             <div class="print-prop">Định dạng in</div>
             <div class="confirm">Xác nhận</div>
+=======
+      <div class="inner-warp">
+        <div class="header">
+          <div class="header-logo border-b border-gray-300">
+            <a href="{{ url_for('dash_Stu') }}">
+              <img
+                src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                alt="Logo" />
+            </a>
+>>>>>>> f104df610672fd893c80ebe27457988d29187a2d
           </div>
 
           <div class="inner-file">
@@ -106,6 +117,7 @@
                     </form>
                   </div>
                 </div>
+<<<<<<< HEAD
                 <div class="filewarpper" id="filewarpper">
                 </div>
               </div>
@@ -116,6 +128,24 @@
                     <input type="file" name="file" id="file-upload" style="display: none" accept=".pdf,.png,.jpg" />
                     <label for="file-upload" class="add">
                       Tải lên
+=======
+                <div class="main-upload-content">Thả tệp ở đây</div>
+                <div class="main-upload-button">
+                  <form
+                    action="{{ url_for('upload_file') }}"
+                    method="post"
+                    enctype="multipart/form-data">
+                    <!-- Ẩn input file -->
+                    <input
+                      type="file"
+                      name="file"
+                      id="file-upload"
+                      style="display: none"
+                      onchange="this.form.submit()" />
+                    <!-- Nhãn đóng vai trò là nút -->
+                    <label for="file-upload" class="upload-label">
+                      <i class="fa-solid fa-upload"></i> Tải lên từ máy tính
+>>>>>>> f104df610672fd893c80ebe27457988d29187a2d
                     </label>
                   </form>
                 </div>

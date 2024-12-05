@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <!-- Link to External CSS -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/file_page_setting.css') }}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  </head>
+
+  <body>
+    <div class="inner-view-main box-border">
+      <div class="inner-containner">
+        <!-- Sidebar -->
+        <div class="inner-left" id="sidebar">
+          <div class="inner-tag">
+            <a
+              href="{{ url_for('dash_SPSO') }}"
+              class="inner-logo no-underline flex">
+              <img
+                src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                alt="Logo" />
+            </a>
+            <div class="inner-dash">
+              <div class="inner-dashboard">Bảng điều khiển</div>
+              <button
+                class="inner-angle-left"
+                id="closeSidebar"
+                onclick="toggleSidebar()">
+                <i class="fa-solid fa-angles-left"></i>
+              </button>
+            </div>
+          </div>
+          <!-- Menu -->
+          <div class="inner-left-options">
+            <div class="one">
+              <a href="{{ url_for('dash_SPSO') }}">
+                Bảng điều khiển
+                <i class="fa-solid fa-angle-right"></i>
+              </a>
+            </div>
+            <div class="two">
+              <a href="{{ url_for('view_reports') }}">
+                Lịch sử in
+                <i class="fa-solid fa-angle-right"></i>
+              </a>
+            </div>
+            <div class="three">
+              <a href="#">
+                Quản lý máy in
+                <i class="fa-solid fa-angle-right"></i>
+              </a>
+            </div>
+            <div class="four">
+              <a href="{{ url_for('file_page_setting') }}"> Quản lý tệp </a>
+            </div>
+          </div>
+        </div>
+        <!-- Header -->
+        <div class="header">
+          <div class="header-logo">
+            <a
+              href="{{ url_for('dash_SPSO') }}"
+              class="no-underline p-0 m-0 bg-[#FFFFFF] flex items-center">
+              <img
+                src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
+                alt="Logo" />
+            </a>
+          </div>
+          <div class="header-logout">
+            <a href="{{ url_for('home') }}">
+              SPSO
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </div>
+        <!-- Body -->
+        <div class="inner-body">
+          <!-- Hamburger Button -->
+          <button
+            class="inner-short"
+            id="openSidebar"
+            onclick="toggleSidebar()"
+            style="display: none">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <!-- Action Buttons -->
+          <div class="button-group">
+            <button id="chinhsuakieutep">
+              Chỉnh sửa kiểu tệp được cho phép
+            </button>
+            <button id="chinhsuasotrang">Chỉnh sửa số trang mặc định</button>
+            <button id="chinhsuangaymacdinh">Chỉnh sửa ngày phát giấy</button>
+          </div>
+        </div>
+        <div id="popupChinhSuaKieuTep"></div>
+        <div id="popupChinhSuaSoTrang"></div>
+        <div id="popupChinhSuaNgayMacDinh"></div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        const openBtn = document.getElementById("openSidebar");
+        const closeBtn = document.getElementById("closeSidebar");
+
+        if (sidebar.style.display === "none") {
+          sidebar.style.display = "block";
+          openBtn.style.display = "none";
+        } else {
+          sidebar.style.display = "none";
+          openBtn.style.display = "block";
+        }
+      }
+
+      document
+        .getElementById("chinhsuakieutep")
+        .addEventListener("click", function (event) {
+          // Fetch and load the popup HTML dynamically
+          event.preventDefault();
+          fetch("popup_file_types.html")
+            .then((response) => response.text())
+            .then((html) => {
+              document.getElementById("popupChinhSuaKieuTep").innerHTML = html;
+              document.getElementById("popupChinhSuaKieuTep").style.display =
+                "block";
+
+              // Add functionality to close the popup (defined in popup.html)
+              const closeBtn = document.querySelector(".close-btn");
+              closeBtn.addEventListener("click", function () {
+                document.getElementById("popupChinhSuaKieuTep").style.display =
+                  "none";
+                document.getElementById("popupChinhSuaKieuTep").innerHTML = ""; // Clear popup
+              });
+            })
+            .catch((error) => {
+              console.error("Error loading popup:", error);
+            });
+          fetchFileTypes();
+        });
+      document
+        .getElementById("chinhsuasotrang")
+        .addEventListener("click", function () {
+          // Fetch and load the popup HTML dynamically
+          fetch("popup_default_pages.html")
+            .then((response) => response.text())
+            .then((html) => {
+              // Insert the fetched popup HTML into the placeholder element
+              document.getElementById("popupChinhSuaSoTrang").innerHTML = html;
+              document.getElementById("popupChinhSuaSoTrang").style.display =
+                "block";
+              // Add functionality to close the popup
+              const closeBtn = document.querySelector(".close-btn2");
+              closeBtn.addEventListener("click", function () {
+                document.getElementById("popupChinhSuaSoTrang").style.display =
+                  "none";
+                document.getElementById("popupChinhSuaSoTrang").innerHTML = ""; // Clear popup
+              });
+            })
+            .catch((error) => {
+              console.error("Error loading popup:", error);
+            });
+
+          // Call a function to handle related data loading or updating, if needed
+        });
+
+      document
+        .getElementById("chinhsuangaymacdinh")
+        .addEventListener("click", function () {
+          // Fetch and load the popup HTML dynamically
+          fetch("popup_default_date.html")
+            .then((response) => response.text())
+            .then((html) => {
+              // Insert the fetched popup HTML into the placeholder element
+              document.getElementById("popupChinhSuaNgayMacDinh").innerHTML =
+                html;
+              document.getElementById(
+                "popupChinhSuaNgayMacDinh"
+              ).style.display = "block";
+              // Add functionality to close the popup
+              const closeBtn = document.querySelector(".close-btn3");
+              closeBtn.addEventListener("click", function () {
+                document.getElementById(
+                  "popupChinhSuaNgayMacDinh"
+                ).style.display = "none";
+                document.getElementById("popupChinhSuaNgayMacDinh").innerHTML =
+                  ""; // Clear popup
+              });
+            })
+            .catch((error) => {
+              console.error("Error loading popup:", error);
+            });
+
+          // Call a function to handle related data loading or updating, if needed
+        });
+      function changeDefaultPages() {
+        // Prompt the user for a new value
+        const newPages = prompt("Nhập số trang mặc định mới:");
+
+        // Validate the input
+        if (newPages !== null) {
+          // null means the user clicked 'Cancel'
+          const parsedPages = parseInt(newPages, 10);
+          if (isNaN(parsedPages) || parsedPages < 0) {
+            alert("Vui lòng nhập một số hợp lệ lớn hơn hoặc bằng 0!");
+            return;
+          }
+
+          // Send the new value to the server
+          fetch("/update_pages", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ pages: parsedPages }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                // Update the displayed number dynamically
+                document.getElementById("currentPages").innerText = data.pages;
+
+                // Optionally close the popup
+                // document.getElementById("popupChinhSuaSoNgay").style.display =
+                //   "none";
+              } else {
+                alert("Lỗi: " + data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Đã xảy ra lỗi khi cập nhật số trang mặc định.");
+            });
+        } else {
+          alert("Hành động đã bị hủy.");
+        }
+      }
+
+      function changeDefaultDate() {
+        // Prompt the user for a new value
+        const newDate = prompt("Nhập ngày mặc định mới:");
+
+        // Validate the input
+        if (newDate !== null) {
+          // null means the user clicked 'Cancel'
+          const parsedDate = parseInt(newDate, 10);
+          if (isNaN(parsedDate) || parsedDate < 0) {
+            alert("Vui lòng nhập một số hợp lệ lớn hơn hoặc bằng 0!");
+            return;
+          }
+
+          // Send the new value to the server
+          fetch("/update_date", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ date: parsedDate }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              if (data.success) {
+                // Update the displayed number dynamically
+                document.getElementById("currentDate").innerText = data.date;
+
+                // Optionally close the popup
+                // document.getElementById("popupChinhSuaSoNgay").style.display =
+                //   "none";
+              } else {
+                alert("Lỗi: " + data.message);
+              }
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              alert("Đã xảy ra lỗi khi cập nhật số trang mặc định.");
+            });
+        } else {
+          alert("Hành động đã bị hủy.");
+        }
+      }
+
+      function closePopup() {
+        document.getElementById("popupScreen").classList.add("hidden");
+      }
+      function fetchFileTypes() {
+        fetch("http://127.0.0.1:5001/file-types") // Replace with your Flask URL
+          .then((response) => response.json())
+          .then((data) => {
+            const fileTypesContainer =
+              document.getElementById("fileTypesContainer");
+            fileTypesContainer.innerHTML = ""; // Clear previous content
+            const fileTypes = data.fileTypes;
+            const columnCount = Math.ceil(fileTypes.length / 2); // Divide into two columns
+            const leftColumn = fileTypes.slice(0, columnCount);
+            const rightColumn = fileTypes.slice(columnCount);
+
+            fileTypesContainer.innerHTML = `
+          <div>${leftColumn.map((type) => `<p>${type}</p>`).join("")}</div>
+          <div>${rightColumn.map((type) => `<p>${type}</p>`).join("")}</div>
+        `;
+          })
+          .catch((error) => {
+            console.error("Error fetching file types:", error);
+          });
+      }
+
+      // Add a new file type
+      function addFileType() {
+        const newFileType = prompt("Enter new file type:");
+        if (newFileType) {
+          fetch("http://127.0.0.1:5001/add-file-type", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ fileType: newFileType }),
+          })
+            .then((response) => response.json()) // Parse the JSON response
+            .then((data) => {
+              if (data.message === "File type added successfully") {
+                // Show success notification
+                alert(data.message);
+
+                // Refresh the file types
+                fetchFileTypes();
+              } else {
+                // Show error message if server responds with something else
+                alert(data.message || "Error adding file type.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error adding file type:", error);
+              alert("An error occurred while adding the file type.");
+            });
+        }
+      }
+
+      // Remove a file type
+      function removeFileType() {
+        const fileTypeToRemove = prompt("Enter file type to remove:");
+        if (fileTypeToRemove) {
+          fetch("http://127.0.0.1:5001/remove-file-type", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ fileType: fileTypeToRemove }),
+          })
+            .then((response) => response.json()) // Parse the JSON response
+            .then((data) => {
+              if (data.message === "File type removed successfully") {
+                // Show success notification
+                alert(data.message);
+
+                // Refresh the file types
+                fetchFileTypes();
+              } else {
+                // Show error message if server responds with something else
+                alert(data.message || "Error removing file type.");
+              }
+            })
+            .catch((error) => {
+              console.error("Error removing file type:", error);
+              alert("An error occurred while removing the file type.");
+            });
+        }
+      }
+    </script>
+  </body>
+</html>
