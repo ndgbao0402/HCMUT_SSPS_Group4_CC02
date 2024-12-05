@@ -8,7 +8,7 @@
 
 ## 📌 Introduction
 
-**HCMUT_SSPS_Group4_CC02** is a smart printing service system for students of the University of Danang - Ho Chi Minh City University of Science and Technology. The project is built on the **Flask** platform, a powerful and flexible framework for developing Python web applications.
+**HCMUT_SSPS_Group4_CC02** is a smart printing service system for students of the University of Technology - Viet Nam National University, Ho Chi Minh City. The project is built on the **Flask** platform, a powerful and flexible framework for developing Python web applications.
 
 ### Key Features:
 - Online printing order.
