@@ -279,7 +279,6 @@ a {
   border: 1px dashed #9197b3;
   gap: 10px;
 }
-<<<<<<< HEAD
 .upload .inner-warp .inner-box .inner-main .inner-file .main-upload .first{
     display: flex;
     flex-direction: column;
@@ -301,42 +300,6 @@ a {
     font-size: 32px;
     font-weight: 400;
     color: #9197B3;
-=======
-.upload
-  .inner-warp
-  .inner-box
-  .inner-main
-  .inner-file
-  .main-upload
-  .main-upload-icon {
-  width: 101px;
-  height: 129px;
-}
-.upload
-  .inner-warp
-  .inner-box
-  .inner-main
-  .inner-file
-  .main-upload
-  .main-upload-icon
-  i {
-  width: 100%;
-  height: 100%;
-  font-size: 130px;
-  color: #9197b3;
-}
-.upload
-  .inner-warp
-  .inner-box
-  .inner-main
-  .inner-file
-  .main-upload
-  .main-upload-content {
-  font-family: var(--font);
-  font-size: 32px;
-  font-weight: 400;
-  color: #9197b3;
->>>>>>> f104df610672fd893c80ebe27457988d29187a2d
 }
 /* Đảm bảo tất cả các nút trong phần tải lên đều được định dạng */
 .upload .main-upload-button button,
@@ -386,7 +349,6 @@ a {
 }
 
 .upload-label:hover {
-<<<<<<< HEAD
     background-color: #1068B5; /* Màu khi hover */
 }
 .upload .inner-warp .inner-box .inner-main .inner-file .main-upload .filewarpper{
@@ -970,7 +932,3 @@ display: none;
     color: #FFFFFF;
 }
 /* End fourth-stage */
-=======
-  background-color: #1068b5; /* Màu khi hover */
-}
->>>>>>> f104df610672fd893c80ebe27457988d29187a2d

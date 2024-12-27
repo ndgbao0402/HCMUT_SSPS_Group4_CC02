@@ -18,7 +18,7 @@
         <h3>Chỉnh sửa ngày phát giấy</h3>
         <p>
           ngày phát giấy cho học sinh hàng tháng: ngày
-          <span id="currentDate">20</span>
+          <span id="currentDate"></span>
         </p>
         <button
           class="add-btn"
@@ -28,5 +28,21 @@
         </button>
       </div>
     </div>
+    <script>
+      // Fetch default_date from the server when the popup loads
+      document.addEventListener("DOMContentLoaded", function () {
+        fetch("/get_default_date")
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.date !== undefined) {
+              document.getElementById("currentDate").textContent = data.date;
+            } else {
+              console.error("Error: Missing 'date' field in response.");
+            }
+          })
+          .catch((error) => console.error("Error fetching default date:", error));
+      });
+    </script>
+    
   </body>
 </html>

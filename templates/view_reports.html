@@ -21,27 +21,20 @@
     <div class="inner-view-main">
         <div class="inner-view-main__window fixed z-[9999] left-[30%] top-[20%] h-2/4 w-2/4 hidden">
             <div class="inner-view-main__window--header flex justify-between py-2 px-2 bg-[#1488DB] items-center">
-                <div class="inner-name text-[#FFFFFF] text-2xl font-medium">Nguyễn Văn A</div>
-                <button class="inner-x text-[#E44061] text-3xl bg-transparent"><i class="fa-solid fa-circle-xmark"></i></button>
+                <div class="inner-name text-[#FFFFFF] text-2xl font-medium"></div>
+                <button class="inner-x text-[#E44061] text-3xl bg-transparent"><i
+                        class="fa-solid fa-circle-xmark"></i></button>
             </div>
             <div class="inner-view-main__window--header--content flex flex-col py-5 px-16 bg-[#AEACAC] gap-[1.88rem]">
-                <div>Tên học sinh: Nguyễn Văn A</div>
-                <div>Mã số sinh viên: 2248987</div>
-                <div>Mã máy in: B1-1</div>
-                <div>Điện thoại: 0929283473</div>
-                <div>Email: vana@hcmut.edu.vn</div>
-                <div>Số trang in: 15 (A4: 13, A3: 2)</div>
-                <div>Tên file: Computer Networking A Top-Down Approach, Global Edition, 8th Edition (Kurose, James,
-                    Ross, Keith).pdf</div>
-                <div>Thời gian bắt đầu in: 15:27 15/10/24</div>
-                <div>Thời gian kết thúc in: 15:28 15/10/24 </div>
             </div>
         </div>
         <div class="inner-containner z-[1]">
             <div class="inner-left absolute z-10 bg-[#FFFFFF] h-full w-1/5 block">
-                <div class="inner-tag border-b border-gray-300 flex p-3 h-28 w-full text-base font-bold mb-9 justify-center gap-[0.63rem] items-center">
+                <div
+                    class="inner-tag border-b border-gray-300 flex p-3 h-28 w-full text-base font-bold mb-9 justify-center gap-[0.63rem] items-center">
                     <a href="{{ url_for('dash_SPSO') }}" class="inner-logo flex w-2/5 h-full">
-                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="" class="h-full w-full">
+                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt=""
+                            class="h-full w-full">
                     </a>
                     <div class="inner-dash text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center">
                         <div class="inner-dashboard">
@@ -71,7 +64,7 @@
                         </a>
                     </div>
                     <div class="four flex justify-center">
-                        <a href="#">
+                        <a href="{{ url_for('file_page_setting') }}">
                             Quản lí tệp
                             <i class="fa-solid fa-angle-right"></i>
                         </a>
@@ -81,12 +74,14 @@
             <div class="header flex justify-between pr-3 h-20 bg-[#1488DB]">
                 <div class="header-logo border-b border-gray-300 flex">
                     <a href="{{ url_for('dash_SPSO') }}" class="p-0 m-0 bg-[#FFFFFF] flex items-center">
-                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="" class="w-24 h-20">
+                        <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt=""
+                            class="w-24 h-20">
                     </a>
                 </div>
                 <div class="header-logout flex items-center">
                     <a href="{{ url_for('home') }}" class="text-2xl font-bold text-[#FFFFFF]">
                         SPSO
+                        <i class="fa-solid fa-right-from-bracket"></i>
                     </a>
                 </div>
             </div>
@@ -128,135 +123,61 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail" >
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Nguyen Van A</td>
-                                    <td>B1-1</td>
-                                    <td>0929283473</td>
-                                    <td>vana@hcmut.edu.vn</td>
-                                    <td>15</td>
-                                    <td>
-                                        15:29
-                                        15/10/24
-                                    </td>
-                                    <td><button class="moredetail">
-                                            <i class="fa-solid fa-circle-plus"></i>
-                                        </button></i>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                     </div>
                     <div class="inner-page flex justify-right pr-5 gap-3">
-                        <button>
-                            <i class="fa-solid fa-angle-left"></i>
-                        </button>
-                        <button>1</button>
-                        <button>2</button>
-                        <button>3</button>
-                        <button>4</button>
-                        <button>...</button>
-                        <button>9</button>
-                        <button>
-                            <i class="fa-solid fa-angle-right"></i>
-                        </button>
+                        <!-- Nút mũi tên trái chỉ hiển thị nếu current_page > 1 -->
+                        {% if current_page > 1 %}
+                        <a href="{{ url_for('view_reports', page=current_page-1) }}" class="pagination-button">
+                            <button><i class="fa-solid fa-angle-left"></i></button>
+                        </a>
+                        {% else %}
+                        <a class="pagination-button disabled">
+                            <button><i class="fa-solid fa-angle-left"></i></button>
+                        </a>
+                        {% endif %}
+
+                        <!-- Các nút số trang -->
+                        {% for page_num in page_range %}
+                        <a href="{{ url_for('view_reports', page=page_num) }}"
+                            class="pagination-button {{ 'active' if current_page == page_num else '' }}">
+                            <button>
+                                {{ page_num }}
+                            </button>
+                        </a>
+                        {% endfor %}
+
+                        <!-- Nút "..." nếu có nhiều trang hơn -->
+                        {% if total_pages > 4 and current_page < total_pages - 2 %} <span><button>...</button></span>
+                            {% endif %}
+
+                            <!-- Nút số trang cuối cùng nếu current_page < total_pages - 1 -->
+                            {% if current_page < total_pages - 1 %} <a
+                                href="{{ url_for('view_reports', page=total_pages) }}" class="pagination-button">
+                                <button>
+                                    {{ total_pages }}
+                                </button>
+                                </a>
+                                {% endif %}
+
+                                <!-- Nút mũi tên phải chỉ hiển thị nếu current_page < total_pages -->
+                                {% if current_page < total_pages %} <a
+                                    href="{{ url_for('view_reports', page=current_page+1) }}" class="pagination-button">
+                                    <button><i class="fa-solid fa-angle-right"></i></button>
+                                    </a>
+                                    {% else %}
+                                    <a  class="pagination-button disabled">
+                                        <button><i class="fa-solid fa-angle-right"></i></button>
+                                    </a>
+                                    {% endif %}
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='js/viewrp.js') }}">
-
-    </script>
+    <script src="{{ url_for('static', filename='js/viewrp.js') }}"></script>
 </body>
 
 </html>

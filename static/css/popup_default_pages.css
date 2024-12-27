@@ -41,3 +41,7 @@
   text-decoration: none;
   cursor: pointer;
 }
+.currentPages{
+  width: auto;
+  height: auto;
+}

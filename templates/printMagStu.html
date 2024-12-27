@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>print management</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/printMagStu.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="inner-manage">
+    <div class="inner-left">
+      <div class="inner-tag box-border">
+        <a href="{{ url_for('dash_Stu') }}" class="inner-logo no-underline flex w-2/5 h-full">
+          <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="Logo" />
+        </a>
+        <div class="inner-dash box-border text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center">
+          <div class="inner-dashboard">Bảng điều khiển</div>
+          <button class="inner-angle-left">
+            <i class="fa-solid fa-angles-left"></i>
+          </button>
+        </div>
+      </div>
+      <div class="inner-left-options">
+        <div class="one">
+          <a href="{{ url_for('dash_Stu') }}"> Bảng điều khiển </a>
+        </div>
+        <div class="two">
+          <a href="{{ url_for('upload') }}">
+            In tài liệu
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="three">
+          <a href="{{ url_for('printMagStu') }}">
+            Quản lí in
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="four">
+          <a href="{{ url_for('filepageStu') }}">
+            Tệp
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="inner-manage-warp">
+      <div class="header">
+        <div class="header-logo border-b border-gray-300">
+          <a href="{{ url_for('dash_Stu') }}">
+            <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="Logo" />
+          </a>
+        </div>
+        <div class="header-logout">
+          <div class="log-out">
+            <a href="{{ url_for('home') }}">
+              Sinh viên
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inner-box ">
+      <button class="inner-short w-11 h-16 text-[3.13rem] leading-none bg-transparent ml-3 mt-3">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="inner-box-content">
+        <div class="inner-prop" id="inner-box-content1">
+          <div class="inner-prop-file">
+            <div class="inner-content">Số lần đã in:</div>
+            <div class="inner-amount" id="printtimes"></div>
+          </div>
+          <div class="inner-prop-usedpage">
+            <div class="inner-content">Số trang đã sử dụng:</div>
+            <div class="inner-amount" id="usedpage"></div>
+          </div>
+          <div class="inner-prop-restpage">
+            <div class="inner-content">Số trang còn lại:</div>
+            <div class="inner-amount" id="restpage"></div>
+          </div>
+          <button id="buypage">Mua Giấy in</button>
+        </div>
+        <div class="inner-history" id="inner-box-content2">
+          <div class="inner-content">Lịch sử in</div>
+          <div class="inner-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tên tệp in</th>
+                  <th>Mã máy in</th>
+                  <th>Cỡ giấy</th>
+                  <th>Chế độ in</th>
+                  <th>Số trang in</th>
+                  <th>Số lượng bản sao</th>
+                  <th>Ngày in</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="payment" id="payment">
+          <div class="payment-header">
+            Thông tin thanh toán
+          </div>
+          <div class="payment-info">
+          </div>
+          <div class="payment-account">
+            <div class="payment-account-info">
+              <!-- <div class="info-bank">
+                <div class="info-bank-subtitle">Tên ngân hàng</div>
+                <div class="info-bank-main">OCB: Ngân hàng TMCP Phương Đông</div>
+              </div>
+              <div class="info-account">
+                <div class="account-number">Số Tài khoản</div>
+                <div class="account-number-num">123456789</div>
+              </div>
+              <div class="info-name">
+                <div class="account-name">Tên tài khoản</div>
+                <div class="account-name-name">Nguyễn Văn A</div>
+              </div> -->
+            </div>
+            <img src="{{ url_for('static', filename='image/Rectangle 20.png') }}" alt="">
+          </div>
+          <div class="payment-end">
+            <button id="paybtn">Hoàn tất</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="popup-buypage"></div>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttonL = document.querySelector(".inner-manage .inner-left .inner-tag .inner-dash button");
+      const innerS = document.querySelector(".inner-manage .inner-box .inner-short");
+      const innerMagLeft = document.querySelector(".inner-manage .inner-left");
+      const managecontent = document.querySelector(".inner-manage .inner-box .inner-box-content")
+      if (buttonL && innerS && innerMagLeft) {
+        buttonL.addEventListener("click", () => {
+          innerMagLeft.style.display = "none";
+          managecontent.style.width = "100%";
+        });
+        innerS.addEventListener("click", () => {
+          innerMagLeft.style.display = "block";
+          managecontent.style.width = "80%";
+        });
+      } else {
+        console.error("One or more elements not found!");
+      }
+    });
+    document.getElementById("buypage").addEventListener("click", function (event) {
+      event.preventDefault(); // Prevent default button behavior
+
+      // Fetch and load popup content
+      fetch("/buypage")
+        .then((response) => response.text())
+        .then((html) => {
+          const popupContainer = document.getElementById("popup-buypage");
+          popupContainer.innerHTML = html;
+          popupContainer.style.display = "block";
+
+          const continueBtn = popupContainer.querySelector(".continue-btn");
+          const closeBtn = popupContainer.querySelector(".closepopup4");
+          const numPagesInput = popupContainer.querySelector(".content-numpage input");
+          const bankSelect = popupContainer.querySelector("#bank");
+          const UserPayment = document.getElementById("payment");
+          const UserHistory= document.getElementById('inner-box-content2');
+          const PageFileprop=document.getElementById('inner-box-content1');
+          if (continueBtn && numPagesInput && bankSelect) {
+            continueBtn.addEventListener("click", function () {
+              const numPages = parseInt(numPagesInput.value, 10) || 0;
+              const selectedBank = bankSelect.value;
+
+              if (!numPages || numPages <= 0) {
+                alert("Vui lòng nhập số lượng giấy hợp lệ.");
+                return;
+              }
+
+              // Fetch detailed user info to display payment details
+              fetch("/get_user_details")
+                .then((response) => response.json())
+                .then((userDetails) => {
+                  if (!userDetails.success) {
+                    alert("Không thể lấy thông tin người dùng chi tiết. Vui lòng đăng nhập lại.");
+                    return;
+                  }
+
+                  // Fetch the currency for calculations
+                  fetch("/get_currency")
+                    .then((res) => res.json())
+                    .then((currencyData) => {
+                      const currency = currencyData.currency;
+                      const formatter = new Intl.NumberFormat("vi-VN");
+
+                      const formattedCurrency = formatter.format(currency);
+                      const formattedTotal = formatter.format(numPages * currency);
+
+                      // Update the payment-info dynamically
+                      const paymentInfoContainer = document.querySelector(".payment-info");
+                      paymentInfoContainer.innerHTML = `
+                    <p>Họ và tên: ${userDetails.name}</p>
+                    <p>Số điện thoại: ${userDetails.phone}</p>
+                    <p>Email: ${userDetails.email}</p>
+                    <p>Số lượng giấy in mua: ${numPages}</p>
+                    <p>Đơn vị giá: ${formattedCurrency} VND/tờ</p>
+                    <p>Tổng số tiền: ${formattedTotal} VND</p>
+                  `;
+                  fetchAndUpdateBankInfo(selectedBank);
+                      // Show payment section
+                      popupContainer.style.display = "none";
+                      UserPayment.style.display = "flex";
+                      PageFileprop.style.display="none";
+                      UserHistory.style.display="none";
+
+                      // Save details for final submission
+                      UserPayment.dataset.numPages = numPages; // Store in DOM for later
+                      UserPayment.dataset.selectedBank = selectedBank;
+                    })
+                    .catch((error) => {
+                      console.error("Error fetching currency:", error);
+                      alert("Không thể lấy thông tin đơn vị giá.");
+                    });
+                })
+                .catch((error) => {
+                  console.error("Error fetching user details:", error);
+                  alert("Không thể kết nối với máy chủ để lấy thông tin người dùng chi tiết.");
+                });
+            });
+          } else {
+            console.error("Required elements are missing in the loaded popup.");
+          }
+
+          if (closeBtn) {
+            closeBtn.addEventListener("click", function () {
+              popupContainer.style.display = "none";
+              popupContainer.innerHTML = "";
+            });
+          }
+        })
+        .catch((error) => {
+          console.error("Error loading popup:", error);
+        });
+    });
+
+    // Listen for "Hoàn tất" button click
+    document.getElementById("paybtn").addEventListener("click", function () {
+      const UserPayment = document.getElementById("payment");
+
+      const numPages = parseInt(UserPayment.dataset.numPages, 10);
+      const selectedBank = UserPayment.dataset.selectedBank;
+
+      if (!numPages || numPages <= 0) {
+        alert("Vui lòng nhập số lượng giấy hợp lệ.");
+        return;
+      }
+
+      // Save the purchase data
+      const data = { numberOfPages: numPages, bank: selectedBank };
+      fetch("/save_purchase", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((response) => response.json())
+        .then((result) => {
+          if (result.success) {
+            alert("Mua giấy thành công!");
+            console.log("Saved purchase:", result.data);
+            window.location.href = '/printMagStu';
+          } else {
+            alert("Đã xảy ra lỗi: " + result.message);
+          }
+        })
+        .catch((error) => {
+          console.error("Error saving purchase:", error);
+          alert("Không thể kết nối với máy chủ.");
+        });
+    });
+    function fetchAndUpdateBankInfo(selectedBank) {
+  // Fetch the bank information dynamically
+  fetch(`/get_bank_info?bank=${selectedBank}`)
+    .then((res) => res.json())
+    .then((bankInfo) => {
+      if (!bankInfo.success) {
+        alert("Không thể lấy thông tin ngân hàng.");
+        return;
+      }
+
+      // Update the bank-info dynamically
+      const bankInfoContainer = document.querySelector(".payment-account-info");
+      bankInfoContainer.innerHTML = `
+        <div class="info-bank">
+          <div class="info-bank-subtitle">Tên ngân hàng</div>
+          <div class="info-bank-main">${bankInfo.data.Bankname}</div>
+        </div>
+        <div class="info-account">
+          <div class="account-number">Số Tài khoản</div>
+          <div class="account-number-num">${bankInfo.data.Accountnum}</div>
+        </div>
+        <div class="info-name">
+          <div class="account-name">Tên tài khoản</div>
+          <div class="account-name-name">${bankInfo.data.Accountname}</div>
+        </div>
+      `;
+    })
+    .catch((error) => {
+      console.error("Error fetching bank info:", error);
+      alert("Không thể kết nối với máy chủ để lấy thông tin ngân hàng.");
+    });
+}
+
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fetch user info on page load
+      fetch("/get_user_info")
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            // Update HTML elements with data
+            document.getElementById("printtimes").textContent = data.printtimes;
+            document.getElementById("usedpage").textContent = data.usedpage;
+            document.getElementById("restpage").textContent = data.page;
+          } else {
+            console.error("Failed to fetch user info:", data.message);
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching user info:", error);
+        });
+    });
+    document.addEventListener("DOMContentLoaded", () => {
+      // Fetch user-specific print data on page load
+      fetch("/get_print_data")
+        .then(response => response.json())
+        .then(data => {
+          if (Array.isArray(data) && data.length > 0) {
+            const tableBody = document.querySelector(".inner-table tbody");
+            data.forEach(print => {
+              // Lấy thông tin tệp đầu tiên từ uploadedFiles
+              const fileName = print.uploadedFiles?.[0]?.name || "N/A";
+
+              // Chuyển đổi giá trị printMode
+              const printModeText = print.printMode === "oneside" ? "Một mặt" :
+                print.printMode === "twoside" ? "Hai mặt" : "Không xác định";
+
+              // Tạo hàng mới
+              const row = document.createElement("tr");
+              row.innerHTML = `
+              <td>${fileName}</td>
+              <td>${print.printerId || "N/A"}</td>
+              <td>${print.paperSize || "N/A"}</td>
+              <td>${printModeText}</td>
+              <td>${print.pageCount || "N/A"}</td>
+              <td>${print.copyCount || "N/A"}</td>
+              <td>${new Date(print.timestamp).toLocaleString() || "N/A"}</td>
+            `;
+              tableBody.appendChild(row);
+            });
+          } else {
+            console.error("No print data found for this user.");
+          }
+        })
+        .catch(error => {
+          console.error("Error fetching print data:", error);
+        });
+    });
+
+
+  </script>
+</body>
+
+</html>

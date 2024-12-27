@@ -272,6 +272,9 @@ a{
     gap: 10px;
    
 }
+.inner-containner .inner-body .inner-right .inner-right__header .inner-right__header__operate .inner-search input{
+    width: 80%;
+}
 .inner-containner .inner-body .inner-right .inner-right__header .inner-right__header__operate .inner-sort{
     display: flex;
     align-items: center;

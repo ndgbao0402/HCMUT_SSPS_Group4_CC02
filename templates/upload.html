@@ -43,13 +43,13 @@
           </a>
         </div>
         <div class="three">
-          <a href="#">
+          <a href="{{ url_for('printMagStu') }}">
             Quản lí in
             <i class="fa-solid fa-angle-right"></i>
           </a>
         </div>
         <div class="four">
-          <a href="#">
+          <a href="{{ url_for('filepageStu') }}">
             Tệp
             <i class="fa-solid fa-angle-right"></i>
           </a>
@@ -72,7 +72,6 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       <div class="inner-box">
         <button class="inner-short">
           <i class="fa-solid fa-bars"></i>
@@ -83,16 +82,6 @@
             <div class="choose-printer">Chọn máy in</div>
             <div class="print-prop">Định dạng in</div>
             <div class="confirm">Xác nhận</div>
-=======
-      <div class="inner-warp">
-        <div class="header">
-          <div class="header-logo border-b border-gray-300">
-            <a href="{{ url_for('dash_Stu') }}">
-              <img
-                src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}"
-                alt="Logo" />
-            </a>
->>>>>>> f104df610672fd893c80ebe27457988d29187a2d
           </div>
 
           <div class="inner-file">
@@ -107,17 +96,18 @@
                   </div>
                   <div class="main-upload-content">Thả tệp ở đây</div>
                   <div class="main-upload-button">
-                    <form action="">
+                    <form id="upload-form" method="POST" action="/upload" enctype="multipart/form-data">
                       <!-- Ẩn input file -->
                       <input type="file" name="file" id="file-upload" style="display: none" accept=".pdf,.png,.jpg" />
                       <!-- Nhãn đóng vai trò là nút -->
-                      <label for="file-upload" class="upload-label">
+                      <label for="file-upload" class="upload-label" id="file-upload-label">
                         <i class="fa-solid fa-upload"></i> Tải lên từ máy tính
                       </label>
                     </form>
+
+
                   </div>
                 </div>
-<<<<<<< HEAD
                 <div class="filewarpper" id="filewarpper">
                 </div>
               </div>
@@ -125,27 +115,9 @@
               <div class="add-forward">
                 <div class="add_more">
                   <form action="">
-                    <input type="file" name="file" id="file-upload" style="display: none" accept=".pdf,.png,.jpg" />
+                    <input type="file" name="file" id="file-upload" style="display: none" />
                     <label for="file-upload" class="add">
                       Tải lên
-=======
-                <div class="main-upload-content">Thả tệp ở đây</div>
-                <div class="main-upload-button">
-                  <form
-                    action="{{ url_for('upload_file') }}"
-                    method="post"
-                    enctype="multipart/form-data">
-                    <!-- Ẩn input file -->
-                    <input
-                      type="file"
-                      name="file"
-                      id="file-upload"
-                      style="display: none"
-                      onchange="this.form.submit()" />
-                    <!-- Nhãn đóng vai trò là nút -->
-                    <label for="file-upload" class="upload-label">
-                      <i class="fa-solid fa-upload"></i> Tải lên từ máy tính
->>>>>>> f104df610672fd893c80ebe27457988d29187a2d
                     </label>
                   </form>
                 </div>
@@ -245,7 +217,7 @@
               </div>
               <div class="second-stage-two">
                 <div class="second-stage-two__header">
-                    Máy in B1-1
+                    
                 </div>
                 <div class="second-stage-two__content">
                   <div class="second-stage-two__content-desc">
@@ -253,13 +225,13 @@
                       <img id="printer-image" src="../static/image/B1-1.png" alt="">
                     </div>
                     <div class="second-stage-two__content-desc-detail">
-                      <p id="printer-id">Mã máy in: B1-1</p>
-                      <p id="printer-brand">Tên thương hiệu: Epson</p>
-                      <p id="printer-model">Kiểu máy: Epson EcoTank ET-3760</p>
-                      <p id="printer-date">Hoạt động vào ngày: 21/10/2024</p>
-                      <p id="printer-pages">Số trang còn lại: 238 (15:35 27/09/2024)</p>
-                      <p id="printer-description">Mô tả: Tốc độ in 24 trang/phút. Máy in đa chức năng (in phun, in laser). Sức chứa giấy 500 tờ.</p>
-                      <p id="printer-location">Địa điểm: Cơ sở 1, tòa B1, phòng B1-101</p>
+                      <p id="printer-id"></p>
+                      <p id="printer-brand"></p>
+                      <p id="printer-model"></p>
+                      <p id="printer-date"></p>
+                      <p id="printer-pages"></p>
+                      <p id="printer-description"></p>
+                      <p id="printer-location"></p>
                     </div>
                   </div>
                   <div class="second-stage-two__content-foot">
@@ -278,9 +250,6 @@
                   <div class="third-stage__setting-prop-size">
                     <label for="size">Cỡ giấy:</label>
                     <select name="size" id="size">
-                      <option value="A0"><strong>A0</strong></option>
-                      <option value="A1"><strong>A1</strong></option>
-                      <option value="A2"><strong>A2</strong></option>
                       <option value="A3"><strong>A3</strong></option>
                       <option value="A4" selected><strong>A4</strong></option>
                     </select>
@@ -293,7 +262,7 @@
                     <label for="mode">Chế độ in:</label>
                     <select name="mode" id="mode">
                       <option value="twoside" selected><strong>Hai mặt</strong></option>
-                      <option value="onesize"><strong>Một mặt</strong></option>
+                      <option value="oneside"><strong>Một mặt</strong></option>
                     </select>
                   </div>
                   <div class="third-stage__setting-prop-copy">
@@ -319,11 +288,6 @@
                   </div>
                 </div>
                 <div class="fourth-stage__uploaded-file-prop">
-                  <!-- <p>Máy in: B1-1</p>
-                  <p>Cỡ giấy: A4</p>
-                  <p>Số trang in: 20</p>
-                  <p>Chế độ in: Hai mặt</p>
-                  <p>Số lượng bản sao: 2</p> -->
                 </div>
                 </div>
                 <div class="fourth-stage__foot">
@@ -343,6 +307,22 @@
   <div id="overlay-confirm"></div>
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   <script src="{{ url_for('static', filename='js/file.js') }}"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        fetch('http://127.0.0.1:5001/file-types')
+            .then(response => response.json())
+            .then(data => {
+                const fileUpload = document.getElementById('file-upload');
+                if (data.fileTypes && Array.isArray(data.fileTypes)) {
+                    // Join the file types into a comma-separated string
+                    fileUpload.accept = data.fileTypes.join(',');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching file types:', error);
+            });
+    });
+</script>
 </body>
 
 </html>

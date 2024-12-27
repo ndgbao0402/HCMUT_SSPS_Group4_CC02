@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --color--text-light: #ffffff;
+  --color--header: #1488db;
+  --font: "Be Vietnam Pro", sans-serif;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: var(--font);
+}
+a {
+  text-decoration: none;
+}
+.inner-manage-warp {
+  z-index: 10;
+}
+.inner-manage-warp .header {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 10px;
+  height: 83px;
+  background-color: var(--color--header);
+}
+.inner-manage-warp .header .header-logo {
+  display: flex;
+}
+.inner-manage-warp .header .header-logo a {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+}
+.inner-manage-warp .header .header-logo a img {
+  width: 97px;
+  height: 73px;
+}
+
+.inner-manage-warp .header .header-logout {
+  display: flex;
+  align-items: center;
+}
+.inner-manage-warp .header .header-logout .log-out a {
+  font-family: var(--font);
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+}
+.inner-manage .inner-left {
+  position: absolute;
+  z-index: 10;
+  background-color: #ffffff;
+  height: 100%;
+  width: 20%;
+  display: block;
+  border: 1px solid #dddddd;
+}
+.inner-manage .inner-left .inner-tag {
+  display: flex;
+  border-bottom: 1px solid #dddddd;
+  padding: 10px;
+  height: 105px;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 37px;
+  justify-content: center;
+  gap: 10px;
+}
+.inner-manage .inner-left .inner-tag .inner-dash {
+  display: flex;
+  width: 60%;
+  gap: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.inner-manage .inner-left .inner-tag .inner-dash button {
+  font-family: var(--font);
+  font-size: 14px;
+  color: #9197b3;
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+}
+.inner-manage .inner-left .inner-tag {
+  display: flex;
+  align-items: center;
+  
+}
+.inner-manage .inner-left .inner-tag a {
+  display: flex;
+  width: 40%;
+  height: 100%;
+}
+.inner-manage .inner-left .inner-tag .inner-logo img {
+  height: 100%;
+  width: 100%;
+}
+
+.inner-manage .inner-left .inner-left-options {
+  display: flex;
+  flex-direction: column;
+  gap: 37px;
+  text-align: left;
+  justify-content: center;
+}
+.inner-manage .inner-left .inner-left-options .one {
+  display: flex;
+  justify-content: center;
+}
+.inner-manage .inner-left .inner-left-options .one a {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font);
+  font-size: 16px;
+  color: #9197b3;
+  height: 46px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+}
+.inner-manage .inner-left .inner-left-options .two {
+  display: flex;
+  justify-content: center;
+}
+.inner-manage .inner-left .inner-left-options .two a {
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--font);
+    font-size: 16px;
+    color: #9197b3;
+    height: 46px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+}
+.inner-manage .inner-left .inner-left-options .four {
+  display: flex;
+  justify-content: center;
+}
+.inner-manage .inner-left .inner-left-options .four a {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font);
+  font-size: 16px;
+  color: #9197b3;
+  height: 46px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5%;
+}
+
+.inner-manage .inner-left .inner-left-options .three {
+  display: flex;
+  justify-content: center;
+}
+.inner-manage .inner-left .inner-left-options .three a {
+    display: flex;
+    width: 70%;
+    justify-content: space-between;
+    font-family: var(--font);
+    font-size: 16px;
+    color: #ffffff;
+    background-color: #1488db;
+    height: 46px;
+    border-radius: 8px;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5%;
+}
+
+.inner-manage .inner-box{
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  justify-content: space-between;
+}
+.inner-manage .inner-box .inner-box-content{
+  width: 80%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.inner-manage .inner-box .inner-box-content .inner-prop{
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  border: 1px solid #292D32;
+  height: auto;
+  width: auto;
+}
+.inner-manage .inner-box .inner-box-content .inner-prop .inner-prop-file{
+  padding: 27px 53px;
+  background-color: #E7E7E7;
+  border-radius: 10px;
+  border: 1px solid #D6DCE9;
+  width: 27%;
+  font-size: 16px;
+  font-family: var(--font);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+}
+.inner-manage .inner-box .inner-box-content .inner-prop .inner-prop-usedpage{
+  padding: 27px 53px;
+  background-color: #E7E7E7;
+  border-radius: 10px;
+  border: 1px solid #D6DCE9;
+  width: 27%;
+  font-size: 16px;
+  font-family: var(--font);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+}
+.inner-manage .inner-box .inner-box-content .inner-prop .inner-prop-restpage{
+  padding: 27px 53px;
+  background-color: #E7E7E7;
+  border-radius: 10px;
+  border: 1px solid #D6DCE9;
+  width: 27%;
+  font-size: 16px;
+  font-family: var(--font);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+}
+.inner-manage .inner-box .inner-box-content .inner-prop button{
+  padding: 10px 26px;
+  background-color: #1488db;
+  color: #ffffff;
+  font-family: var(--font);
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  height: auto;
+}
+.inner-manage .inner-box .inner-box-content .inner-history{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.inner-manage .inner-box .inner-box-content .inner-history .inner-content{
+  font-size: 32px;
+  font-weight: 500;
+  font-family: var(--font);
+}
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table th{
+  color: #B5B7C0;
+}
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table th,
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table td{
+  text-align: center;
+  padding: 10px 10px;
+  border-bottom: 1px solid #ddd;
+  height: 62px;
+}
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+.inner-manage .inner-box .inner-box-content .inner-history .inner-table table tbody td button{
+  border: 0;
+  background-color: transparent;
+  color: #1488DB;
+  font-size: 25px;
+}
+
+.inner-manage .inner-box .inner-box-content .payment{
+  border: 1px solid #000000;
+  padding: 10px;
+  height: auto;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-header{
+  color: #292D32;
+  font-size: 32px;
+  font-weight: 500;
+  font-family: var(--font);
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-info{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 16px;
+  font-family: var(--font);
+  font-weight: 500;
+  color: #292D32;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-account{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border: 1px solid #BBBBBB;
+  padding: 20px;
+  
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-account .payment-account-info{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-account img{
+  width: 20%;
+  height: 20%;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-account .payment-account-info .info-bank,.inner-manage .inner-box .inner-box-content .payment .payment-account .payment-account-info .info-account,
+.inner-manage .inner-box .inner-box-content .payment .payment-account .payment-account-info .info-name
+{
+  display: flex;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: var(--font);
+  color: #292D32;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-end{
+  width: 100%;
+  justify-content: right;
+  display: flex;
+}
+.inner-manage .inner-box .inner-box-content .payment .payment-end button{
+  background-color: #1488DB;
+  padding: 8px 25px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: var(--font);
+}

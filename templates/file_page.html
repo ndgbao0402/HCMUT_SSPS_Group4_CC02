@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=, initial-scale=1.0">
+  <title>Tệp</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/file_page.css') }}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+  <div class="inner-file">
+    <div class="inner-left">
+      <div class="inner-tag box-border">
+        <a href="{{ url_for('dash_Stu') }}" class="inner-logo no-underline flex w-2/5 h-full">
+          <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="Logo" />
+        </a>
+        <div class="inner-dash box-border text-xl flex w-3/5 gap-[0.63rem] text-center justify-center items-center">
+          <div class="inner-dashboard">Bảng điều khiển</div>
+          <button class="inner-angle-left">
+            <i class="fa-solid fa-angles-left"></i>
+          </button>
+        </div>
+      </div>
+      <div class="inner-left-options">
+        <div class="one">
+          <a href="{{ url_for('dash_Stu') }}"> Bảng điều khiển </a>
+        </div>
+        <div class="two">
+          <a href="{{ url_for('upload') }}">
+            In tài liệu
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="three">
+          <a href="{{ url_for('printMagStu') }}">
+            Quản lí in
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+        <div class="four">
+          <a href="{{ url_for('filepageStu') }}">
+            Tệp
+            <i class="fa-solid fa-angle-right"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="inner-file-warp">
+      <div class="header">
+        <div class="header-logo border-b border-gray-300">
+          <a href="{{ url_for('dash_Stu') }}">
+            <img src="{{ url_for('static', filename='image/01_logobachkhoasang 1.png') }}" alt="Logo" />
+          </a>
+        </div>
+        <div class="header-logout">
+          <div class="log-out">
+            <a href="{{ url_for('home') }}">
+              Sinh viên
+              <i class="fa-solid fa-right-from-bracket"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="inner-box">
+      <button class="inner-short w-11 h-16 text-[3.13rem] leading-none bg-transparent ml-3 mt-3">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="alldefault">
+        <div class="alldefault-search">
+          <div class="inner-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Tìm kiếm">
+          </div>
+        </div>
+        <div class="alldefault-detail">
+          <button><div class="alldefault-detailtype" id="detailtype">Các loại tệp được phép</div></button>
+          <button><div class="alldefault-detailpage" id="detailpage">Số trang mặc định</div></button>
+          <button><div class="alldefault-detaildate" id="detaildate">Ngày phát giấy</div></button>
+        </div>
+      </div>
+    </div>
+    <div id="popup-defaulttype"></div>
+    <div id="popup-defaultpage"></div>
+    <div id="popup-defaultdate"></div>
+  </div>
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Document fully loaded and parsed."); // Check if DOM is ready
+
+    const buttonLeft = document.querySelector(".inner-file .inner-left .inner-tag .inner-dash button");
+    const innerfileLeft = document.querySelector(".inner-file .inner-left");
+    const innerfileShort = document.querySelector(".inner-file .inner-box .inner-short");
+    const innerdetail = document.querySelector(".inner-file .inner-box .alldefault");
+
+    if (buttonLeft && innerfileLeft && innerfileShort) {
+        buttonLeft.addEventListener("click", () => {
+            innerfileLeft.style.display = "none";
+            innerdetail.style.width = "100%";
+        });
+
+        innerfileShort.addEventListener("click", () => {
+            innerfileLeft.style.display = "block";
+            innerdetail.style.width = "80%";
+        });
+    } else {
+        console.error("One or more elements are not found!");
+    }
+
+    document.getElementById("detailtype").addEventListener("click", function (event) {
+        event.preventDefault(); // Prevent default button behavior
+
+        // Fetch and load popup content
+        fetch("defaulttypeStu.html")
+            .then((response) => response.text())
+            .then((html) => {
+                document.getElementById("popup-defaulttype").innerHTML = html;
+                document.getElementById("popup-defaulttype").style.display = "block";
+
+                // Add functionality to close the popup
+                const closeBtn = document.querySelector(".closepopup");
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", function () {
+                        document.getElementById("popup-defaulttype").style.display = "none";
+                        document.getElementById("popup-defaulttype").innerHTML = ""; // Clear popup content
+                    });
+                }
+
+                console.log("Popup loaded successfully.");
+                // Fetch file types after popup loads
+                fetchFileTypes();
+            })
+            .catch((error) => {
+                console.error("Lỗi khi tải popup:", error);
+            });
+    });
+
+    function fetchFileTypes() {
+    console.log("Fetching file types...");
+    fetch("http://127.0.0.1:5001/file-types") // Ensure the API URL is correct
+        .then((response) => {
+            console.log("Fetch response received:", response);
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log("Parsed JSON data:", data);
+            const fileTypeList = document.getElementById("fileTypeList");
+            if (!fileTypeList) {
+                console.error("fileTypeList element not found in the DOM.");
+                return;
+            }
+            fileTypeList.innerHTML = ""; // Clear previous content
+
+            const fileTypes = data.fileTypes;
+            console.log("File types array:", fileTypes);
+
+            // Split the fileTypes array into two columns
+            const columnCount = Math.ceil(fileTypes.length / 2);
+            const leftColumn = fileTypes.slice(0, columnCount);
+            const rightColumn = fileTypes.slice(columnCount);
+
+            fileTypeList.innerHTML = `
+                <div style="display: inline-block; width: 45%; vertical-align: top;">
+                    ${leftColumn.map(type => `<p>${type}</p>`).join("")}
+                </div>
+                <div style="display: inline-block; width: 45%; vertical-align: top;">
+                    ${rightColumn.map(type => `<p>${type}</p>`).join("")}
+                </div>
+            `;
+        })
+        .catch((error) => {
+            console.error("Error occurred while fetching file types:", error);
+        });
+}
+});
+document.addEventListener("DOMContentLoaded", () => {
+    // Lắng nghe sự kiện khi nhấn nút "Số trang mặc định"
+    document.getElementById("detailpage").addEventListener("click", function (event) {
+        event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+
+        // Fetch nội dung của popup từ file defaultpageStu.html
+        fetch("defaultpageStu.html")
+            .then((response) => response.text())
+            .then((html) => {
+                // Gắn nội dung vào popup và hiển thị nó
+                const popupContainer = document.getElementById("popup-defaultpage");
+                popupContainer.innerHTML = html;
+                popupContainer.style.display = "block";
+
+                // Thêm sự kiện để đóng popup khi nhấn nút close
+                const closeBtn = document.querySelector(".closepopup2");
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", function () {
+                        popupContainer.style.display = "none";
+                        popupContainer.innerHTML = ""; // Xóa nội dung popup
+                    });
+                }
+                fetchDefaultPages();
+            })
+            .catch((error) => {
+                console.error("Lỗi khi tải popup:", error);
+            });
+    });
+});
+function fetchDefaultPages() {
+        console.log("Fetching default pages...");
+        fetch("http://127.0.0.1:5001/get_default_pages") // Ensure the API URL is correct
+            .then((response) => {
+                console.log("Fetch response received:", response);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((data) => {
+                console.log("Parsed JSON data:", data);
+                const defaultPageElement = document.getElementById("defaultPageCount");
+                if (!defaultPageElement) {
+                    console.error("defaultPageCount element not found in the DOM.");
+                    return;
+                }
+                defaultPageElement.textContent = data.pages || "Không có dữ liệu.";
+            })
+            .catch((error) => {
+                console.error("Error occurred while fetching default pages:", error);
+            });
+    }
+    document.addEventListener("DOMContentLoaded", () => {
+    // Lắng nghe sự kiện khi nhấn nút "Ngày phát giấy"
+    const detailDateButton = document.getElementById("detaildate");
+    const popupContainer = document.getElementById("popup-defaultdate");
+
+    if (detailDateButton && popupContainer) {
+        detailDateButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định của nút
+
+            // Fetch nội dung của popup từ file defaultdateStu.html
+            fetch("defaultdateStu.html")
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.text();
+                })
+                .then((html) => {
+                    // Gắn nội dung vào popup và hiển thị nó
+                    popupContainer.innerHTML = html;
+                    popupContainer.style.display = "block";
+
+                    // Thêm sự kiện để đóng popup khi nhấn nút close
+                    const closeBtn = popupContainer.querySelector(".closepopup3");
+                    if (closeBtn) {
+                        closeBtn.addEventListener("click", function () {
+                            popupContainer.style.display = "none";
+                            popupContainer.innerHTML = ""; // Xóa nội dung popup
+                        });
+                    }
+                    fetchDefaultDate();
+                })
+                .catch((error) => {
+                    console.error("Lỗi khi tải popup:", error);
+                });
+        });
+    } else {
+        console.error("Button or popup container not found!");
+    }
+});
+function fetchDefaultDate() {
+          console.log("Fetching default date...");
+          fetch("http://127.0.0.1:5001/get_default_date")
+              .then((response) => {
+                  if (!response.ok) {
+                      throw new Error(`HTTP error! Status: ${response.status}`);
+                  }
+                  return response.json();
+              })
+              .then((data) => {
+                  const defaultDateElement = document.getElementById("defaultdateCount");
+                  if (!defaultDateElement) {
+                      console.error("Element with ID 'defaultDateContent' not found.");
+                      return;
+                  }
+                  defaultDateElement.textContent = data.date || "Không có dữ liệu.";
+              })
+              .catch((error) => {
+                  console.error("Error occurred while fetching default date:", error);
+              });
+      }
+</script>
+</body>
+
+</html>

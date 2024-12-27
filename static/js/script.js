@@ -10,3 +10,4 @@ innerShort.addEventListener("click",()=>{
     innerLeft.style.display = "block";
     innerMain.style.width = "80%";
 })
+

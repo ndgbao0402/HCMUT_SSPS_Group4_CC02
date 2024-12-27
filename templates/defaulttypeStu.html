@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các kiểu tệp được phép</title>
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/defaulttypeStu.css') }}" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+    <div class="defaulttype-popup">
+        <div class="inner-content">
+            <div class="defaulttype-popup__header">
+                <div class="header-content">Các loại tệp được cho phép</div>
+                <button class="closepopup"><i class="fa-solid fa-circle-xmark"></i></button>
+            </div>
+            <div class="defaulttype-popup__body">
+                <div class="body-subtitle">Những kiểu tệp được cho phép: </div>
+                <div class="body-content" id="fileTypeList"></div>
+            </div>
+        </div>
+
+    </div>
+    
+</body>
+</html>
