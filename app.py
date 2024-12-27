@@ -71,22 +71,19 @@ def get_student_id():
     return jsonify({"success": False, "message": "User not logged in"}), 401
 @app.route('/get_users', methods=['GET'])
 def get_users():
-    # Lấy tháng hiện tại
+    # Lấy ngày và tháng hiện tại
+    current_date = datetime.now().day
     current_month = datetime.now().strftime("%Y-%m")
 
-    # Cập nhật `page` trực tiếp trong `users` nếu chưa được cộng trong tháng này
     for username, user in users.items():
         if "StudentID" in user:
-            # Kiểm tra nếu chưa có `last_updated` hoặc không phải tháng hiện tại
+            # Kiểm tra điều kiện cập nhật `page`
             last_updated = user.get("last_updated", "")
-            if last_updated != current_month:
-                # Cộng thêm `default_pages` vào `page`
+            if current_date == default_date and last_updated != current_month:
                 user["page"] += default_pages
-                # Cập nhật `last_updated` thành tháng hiện tại
                 user["last_updated"] = current_month
                 print(f"Updated page for user {username}: {user['page']} (Month: {current_month})")
 
-    # Trả lại dữ liệu `users` sau khi cập nhật
     return jsonify(users)
 @app.route('/get_user_info', methods=['GET'])
 def get_user_info():
@@ -94,10 +91,11 @@ def get_user_info():
         student_id = session['StudentID']
         user = next((u for u in users.values() if u.get("StudentID") == student_id), None)
         if user:
-            # Ensure the page count is updated for the current month
+            # Cập nhật chỉ khi đúng ngày `default_date`
+            current_date = datetime.now().day
             current_month = datetime.now().strftime("%Y-%m")
             last_updated = user.get("last_updated", "")
-            if last_updated != current_month:
+            if current_date == default_date and last_updated != current_month:
                 user["page"] += default_pages
                 user["last_updated"] = current_month
 
@@ -112,9 +110,7 @@ def get_user_info():
         else:
             return jsonify({"success": False, "message": "User not found"}), 404
 
-    # Nếu không có StudentID, trả về toàn bộ danh sách users
     return jsonify({"success": True, "users": users})
-
 
 @app.route('/get_user_details', methods=['GET'])
 def get_user_details():
