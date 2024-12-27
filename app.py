@@ -419,7 +419,7 @@ def file_page_setting():
 #     return render_template('file_page_setting.html')
 @app.route('/buypage')
 def buy_page():
-    return render_template('popup_buypage.html')
+    return render_template('popup_buypage.html', currency=CURRENCY)
 print_data = [] 
 @app.route('/save_print_data', methods=['POST'])
 def save_print_data():

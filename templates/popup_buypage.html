@@ -20,7 +20,7 @@
                 </div>
                 <input type="number">
             </div>
-            <div class="content-currency">Đơn vị giá: 2.000/tờ</div>
+            <div class="content-currency">Đơn vị giá: {{ "{:,.0f}".format(currency).replace(",", ".") }} VND/tờ</div>
             <div class="content-bank">
                 <div class="content-bank-subtitle">
                     Ngân hàng thanh toán:
