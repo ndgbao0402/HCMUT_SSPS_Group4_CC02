@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${user.phone || "N/A"}</td>
                     <td>${user.email || "N/A"}</td>
                     <td>${printJob.pageCount || "N/A"}</td>
-                    <td>${printJob.timestamp || "N/A"}</td>
+                    <td>${new Date(printJob.timestamp).toLocaleString() || "N/A"}</td>
                     <td>
                         <button class="moredetail" data-username="${printJob.id}">
                             <i class="fa-solid fa-circle-plus"></i>
@@ -126,9 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div>Điện thoại: ${user.phone || "N/A"}</div>
                         <div>Email: ${user.email || "N/A"}</div>
                         <div>Số trang in: ${printJob.pageCount || "N/A"} (${printJob.paperSize || "N/A"})</div>
-                        <div>Tên file: ${printJob.uploadedFiles.length > 0 ? printJob.uploadedFiles[0].name : "N/A"}</div>
+                        <div>Tên file: ${
+                            printJob.uploadedFiles.length > 0
+                                ? printJob.uploadedFiles.map(file => file.name).join(";")
+                                : "N/A"
+                        }</div>
                         <div>Số lượng bản copy: ${printJob.copyCount || "N/A"}</div>
-                        <div>Thời gian bắt đầu in: ${printJob.timestamp || "N/A"}</div>
+                        <div>Thời gian bắt đầu in: ${new Date(printJob.timestamp).toLocaleString() || "N/A"}</div>
                         <hr />
                     `;
             

@@ -112,8 +112,8 @@
           <div class="payment-info">
           </div>
           <div class="payment-account">
-            <div class="payment-account-info">
-              <!-- <div class="info-bank">
+            <!-- <div class="payment-account-info">
+              <div class="info-bank">
                 <div class="info-bank-subtitle">Tên ngân hàng</div>
                 <div class="info-bank-main">OCB: Ngân hàng TMCP Phương Đông</div>
               </div>
@@ -124,9 +124,9 @@
               <div class="info-name">
                 <div class="account-name">Tên tài khoản</div>
                 <div class="account-name-name">Nguyễn Văn A</div>
-              </div> -->
+              </div>
             </div>
-            <img src="{{ url_for('static', filename='image/Rectangle 20.png') }}" alt="">
+            <img src="{{ url_for('static', filename='image/Rectangle 20.png') }}" alt=""> -->
           </div>
           <div class="payment-end">
             <button id="paybtn">Hoàn tất</button>
@@ -295,8 +295,9 @@
       }
 
       // Update the bank-info dynamically
-      const bankInfoContainer = document.querySelector(".payment-account-info");
+      const bankInfoContainer = document.querySelector(".payment-account");
       bankInfoContainer.innerHTML = `
+      <div class="payment-account-info">
         <div class="info-bank">
           <div class="info-bank-subtitle">Tên ngân hàng</div>
           <div class="info-bank-main">${bankInfo.data.Bankname}</div>
@@ -309,6 +310,8 @@
           <div class="account-name">Tên tài khoản</div>
           <div class="account-name-name">${bankInfo.data.Accountname}</div>
         </div>
+      </div>
+      <img src="${bankInfo.data.Logo}" alt="">
       `;
     })
     .catch((error) => {
@@ -323,6 +326,7 @@
         .then(response => response.json())
         .then(data => {
           if (data.success) {
+            console.log(data);
             // Update HTML elements with data
             document.getElementById("printtimes").textContent = data.printtimes;
             document.getElementById("usedpage").textContent = data.usedpage;
@@ -344,7 +348,7 @@
             const tableBody = document.querySelector(".inner-table tbody");
             data.forEach(print => {
               // Lấy thông tin tệp đầu tiên từ uploadedFiles
-              const fileName = print.uploadedFiles?.[0]?.name || "N/A";
+              const fileNames = print.uploadedFiles?.map(file => file.name).join(";<br>") || "N/A";
 
               // Chuyển đổi giá trị printMode
               const printModeText = print.printMode === "oneside" ? "Một mặt" :
@@ -353,7 +357,7 @@
               // Tạo hàng mới
               const row = document.createElement("tr");
               row.innerHTML = `
-              <td>${fileName}</td>
+              <td>${fileNames}</td>
               <td>${print.printerId || "N/A"}</td>
               <td>${print.paperSize || "N/A"}</td>
               <td>${printModeText}</td>

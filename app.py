@@ -40,8 +40,8 @@ bank ={
     "BKpay": {
         "Bankname": "OCB: Ngân hàng TMCP Phương Đông",
         "Accountnum": "123456789",
-        "Accountname": "Nguyễn Văn A"
-
+        "Accountname": "Nguyễn Văn A",
+        "Logo": "{{ url_for('static', filename='image/Rectangle 20.png') }}"
     }
 }
 app.secret_key = '1234'
@@ -90,27 +90,32 @@ def get_users():
     return jsonify(users)
 @app.route('/get_user_info', methods=['GET'])
 def get_user_info():
-    if 'StudentID' not in session:
-        return jsonify({"success": False, "message": "User not logged in"}), 401
+    if 'StudentID' in session:
+        student_id = session['StudentID']
+        user = next((u for u in users.values() if u.get("StudentID") == student_id), None)
+        if user:
+            # Ensure the page count is updated for the current month
+            current_month = datetime.now().strftime("%Y-%m")
+            last_updated = user.get("last_updated", "")
+            if last_updated != current_month:
+                user["page"] += default_pages
+                user["last_updated"] = current_month
 
-    # Retrieve StudentID from session
-    student_id = session['StudentID']
+            response = {
+                "success": True,
+                "StudentID": student_id,
+                "page": user.get("page", 0),
+                "usedpage": user.get("usedpage", 0),
+                "printtimes": user.get("printtimes", 0)
+            }
+            return jsonify(response)
+        else:
+            return jsonify({"success": False, "message": "User not found"}), 404
 
-    # Find the user by StudentID
-    user = next((u for u in users.values() if u.get("StudentID") == student_id), None)
-    if not user:
-        return jsonify({"success": False, "message": "User not found"}), 404
+    # Nếu không có StudentID, trả về toàn bộ danh sách users
+    return jsonify({"success": True, "users": users})
 
-    # Prepare the response with page, usedpage, and printtimes
-    response = {
-        "success": True,
-        "StudentID": student_id,
-        "page": user.get("page", 0),
-        "usedpage": user.get("usedpage", 0),
-        "printtimes": user.get("printtimes", 0)
-    }
 
-    return jsonify(response)
 @app.route('/get_user_details', methods=['GET'])
 def get_user_details():
     if 'StudentID' not in session:
@@ -147,7 +152,14 @@ def get_bank_info():
     if not bank_info:
         return jsonify({"success": False, "message": "Bank not found"}), 404
 
-    return jsonify({"success": True, "data": bank_info})
+    # Add the dynamically generated Logo URL
+    bank_info_with_logo = {
+        **bank_info,
+        "Logo": url_for('static', filename='image/Rectangle 20.png', _external=True)
+    }
+
+    return jsonify({"success": True, "data": bank_info_with_logo})
+
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -535,7 +547,7 @@ def save_purchase():
             "currency": CURRENCY,
             "totalAmount": num_pages * CURRENCY,
             "bank": bank,
-            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+             "timestamp": datetime.now().strftime("%m/%d/%Y, %I:%M:%S %p")
         }
 
         # Save the record to the global list
